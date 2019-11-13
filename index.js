@@ -48,8 +48,8 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
-  /* CODE HERE */
+function processLength(list,callback) {
+  return callback(list.length)
 }
 
 /**
@@ -66,8 +66,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback) {
+  let lastItem = stringList.length - 1
+  return callback(stringList[lastItem])
 }
 
 /**
@@ -87,8 +88,10 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  const reducer = (accum, currentValue,) => accum + currentValue;
+  let sumOfList = numberList.reduce(reducer,0);
+  return callback(sumOfList)
 }
 
 /**
@@ -109,8 +112,9 @@ function processSum(/* CODE HERE */) {
  * [2] Invoking `processProduct` passing 25 and 0 and `(num) => num + 1000`,
  * should return 1000.
 */
-function processProduct(/* CODE HERE */) {
-  /* CODE HERE */
+function processProduct(num1,num2,callback) {
+  let product = num1 * num2;
+  return callback(product);
 }
 
 /**
@@ -133,8 +137,11 @@ function processProduct(/* CODE HERE */) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  if (list.includes(item)){
+    return callback(true)
+  }
+   return callback(false)
 }
 
 /**
@@ -178,8 +185,14 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+
+function getFullNames(runners) {
+  let newArr = [];
+    runners.forEach(function(names){
+     newArr.push(`${names.last_name}, ${names.first_name}`)
+  });
+  return newArr;
+
 }
 
 /**
@@ -195,7 +208,9 @@ function getFullNames(/* CODE HERE */) {
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
 function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+  //map first names with uppercase
+  let caps = [];
+  
 }
 
 /**
@@ -274,8 +289,22 @@ function counterMaker() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(max) {
+  let count = 0;
+  return function(){
+    if (count <= max){
+      return count++;
+    } else{
+      return count = 0;
+    }
+  }
+}
+
+function counterMakerWithLimit(max) {
+  let count = -1;
+  return function(){
+    return (count < max) ? count +=1:count = 0;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
