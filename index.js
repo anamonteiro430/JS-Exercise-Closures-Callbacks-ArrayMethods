@@ -248,7 +248,7 @@ function tallyUpDonations(runners) {7
   //sum of .donation of all the runners
   let sum = runners.reduce(function(accum,money){
     return accum + money.donation;
-  }, 0)
+  },0)
   return sum;
 }
 
@@ -270,11 +270,12 @@ function tallyUpDonations(runners) {7
 */
 function counterMaker() {
   // BROKEN CODE STARTS
-  const count = 0;
+  let count = -1;
   function counter() {
-    ++count
-  }
-  // BROKEN CODE ENDS
+    count = count + 1
+    return count
+  } 
+  return counter;
 }
 
 /**
