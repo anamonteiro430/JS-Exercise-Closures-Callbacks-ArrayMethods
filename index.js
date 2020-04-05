@@ -244,7 +244,7 @@ function getRunnersByTShirtSize(runners, tShirtSize) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(runners) {7
+function tallyUpDonations(runners) {
   //sum of .donation of all the runners
   let sum = runners.reduce(function(accum,money){
     return accum + money.donation;
